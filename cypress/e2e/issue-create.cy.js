@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker';
 
 
 const randomEmail = faker.internet.email();
-const randomWord = faker.random.word();
-const randomWords = faker.random.words(10, 40);
+const randomTitleWord = faker.lorem.word();
+const randomDescriptionWords = faker.lorem.words(10, 40);
 
 describe('Issue create', () => {
   beforeEach(() => {
@@ -122,10 +122,10 @@ describe('Issue create', () => {
     cy.get('[data-testid="modal:issue-create"]').within(() => {
 
       //Type value to description input field
-      cy.get('.ql-editor').type(randomWords);
+      cy.get('.ql-editor').type(randomDescriptionWords);
 
       //Type value to title input field
-      cy.get('input[name="title"]').type(randomWord);
+      cy.get('input[name="title"]').type(randomTitleWord);
 
       //Select Baby Yoda from reporter dropdown
       cy.get('[data-testid="select:reporterId"]').click();
@@ -155,7 +155,7 @@ describe('Issue create', () => {
         .should('have.length', '5')
         .first()
         .find('p')
-        .contains(randomWord);
+        .contains(randomTitleWord);
 
       cy.get('[data-testid="icon:task"]').should('be.visible');
     });
