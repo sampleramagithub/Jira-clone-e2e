@@ -33,7 +33,7 @@ describe('Issue deletion', () => {
 
     })
 
-    it.only('Issue should be cancel successfully', () => {
+    it('Issue should be cancel successfully', () => {
         cy.get('[data-testid="modal:issue-details"]').within(() => {
             cy.get('[data-testid="icon:trash"]').click()
         })
